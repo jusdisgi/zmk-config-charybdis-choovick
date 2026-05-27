@@ -43,22 +43,6 @@
       bindings = <&mo>, <&kp>;
     };
 
-    // Tap-dance for GUI/Ctrl+B
-    gui_ctrlb: gui_ctrlb {
-      compatible = "zmk,behavior-tap-dance";
-      #binding-cells = <0>;
-      tapping-term-ms = <200>;
-      bindings = <&kp LGUI>, <&kp LC(B)>;
-    };
-
-    // Tap/hold Alt, double-tap Ctrl+Shift+Z
-    lalt_dt: lalt_dt {
-      compatible = "zmk,behavior-tap-dance";
-      #binding-cells = <0>;
-      tapping-term-ms = <200>;
-      bindings = <&kp LALT>, <&kp LC(LS(Z))>;
-    };
-
     // Home row mods - Left hand
     hml: home_row_mod_left {
       compatible = "zmk,behavior-hold-tap";
@@ -84,6 +68,23 @@
       hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41 48 49 50 51 52>; // Left side keys
       hold-trigger-on-release;
     };
+    
+    btht: bluetooth_hold_tap {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        flavor = "tap-preferred";
+        tapping-term-ms = <2000>;
+        require-prior-idle-ms = <100>;
+        bindings = <&btdis>, <&btsel>;
+    };
+
+    tdto0: tap_dance_to_abc_layer {
+        compatible = "zmk,behavior-tap-dance";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&none>, <&to ABC>;
+    };
+
   };
 
   macros {
@@ -135,7 +136,37 @@
         , <&macro_release &mkp LCLK &kp LCTRL &kp LGUI>
         ;
     };
+    
+    btsel: bluetooth_select {
+        compatible = "zmk,behavior-macro-one-param";
+        #binding-cells = <1>;
+        bindings
+            = <&macro_param_1to2>
+            , <&macro_tap &bt BT_SEL MACRO_PLACEHOLDER>
+            , <&macro_tap &out OUT_BLE>
+            ;
+    };
+
+    btdis: bluetooth_disconnect {
+        compatible = "zmk,behavior-macro-one-param";
+        #binding-cells = <1>;
+        bindings
+            = <&macro_param_1to2>
+            , <&macro_tap &bt BT_DISC MACRO_PLACEHOLDER>
+            ;
+    };
+
   };
+
+  
+conditional_layers {
+	compatible = "zmk,conditional-layers";
+		
+	tri_layer {
+		if-layers = <NAV FUN>;
+		then-layer = <UTIL>;
+	};
+};
 
   combos {
     compatible = "zmk,combos";
@@ -147,13 +178,6 @@
       timeout-ms = <50>;
       key-positions = <53 54 55>;
       bindings = <&studio_unlock>;
-    };
-
-    // UTIL layer toggle combo - keys 49, 55, 54
-    combo_util_toggle {
-      timeout-ms = <50>;
-      key-positions = <49 55 54>;
-      bindings = <&tog UTIL>;
     };
 
   };
@@ -189,7 +213,7 @@
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp TAB       &kp Q         &kp W         &kp F         &kp P         &kp B             &kp J         &kp L         &kp U         &kp Y         &kp SQT       &kp BSLH
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp LSFT      &kp A         &kp R         &kp S         &kp T         &kp G             &kp M         &kp N         &kp E         &kp I         &kp O         &kp RSHFT
+    &kp LSFT      &hml LGUI A   &hml LALT R   &hml LCTRL S  &hml LSHIFT T &kp G             &kp M         &hml RSHIFT N  &hml RALT E  &hml RCTRL I  &hml RGUI O   &kp RSHFT
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp LCTRL     &lt FUN Z     &kp X         &kp C         &kp D         &kp V             &kp K         &kp H         &kp COMMA     &kp DOT       &kp FSLH      &kp ENTER
 // ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
@@ -206,14 +230,14 @@
 // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &kp GRAVE     &kp F1        &kp F2        &kp F3        &kp F4        &kp F5            &kp F6        &kp F7        &kp F8        &kp F9        &kp F10       &trans
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp LA(TAB)   &kp LGUI      &kp LALT      &mo FUN       &mkp MB4      &mkp MB5          &kp HOME      &kp PG_DN     &kp PG_UP     &kp END       &kp F11       &kp F12
+    &kp LA(TAB)   &kp LGUI      &kp LALT      &mo FUN       &mkp MB4      &mkp MB5          &kp HOME      &kp N7         &kp N8        &kp N9       &kp F11       &kp F12
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp RCTRL     &kp LG(A)     &ctrl_cmd_hold &mkp RCLK    &mkp LCLK     &mkp MCLK         &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp MINUS     &kp EQUAL
+    &kp RCTRL     &kp LG(A)     &ctrl_cmd_hold &mkp RCLK    &mkp LCLK     &mkp MCLK         &kp LEFT      &kp N4         &kp N5         &kp N6      &kp MINUS     &kp EQUAL
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp LSFT      &kp Z         &kp X         &kp C         &kp V         &mo NAV           &kp RC(LS(TAB)) &kp TAB     &kp INS       &kp ENTER
+    &kp LSFT      &kp Z         &kp X         &kp C         &kp V         &mo NAV           &kp STAR      &kp N1         &kp N2         &kp N3      &kp PLUS      &kp ENTER
 // ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
 //               ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────╮
-                  &trans        &trans        &trans        &trans        &trans            &trans        &trans        &trans
+                  &trans        &trans        &trans        &trans        &trans            &kp DOT       &kp N0         &kp N0
 //               ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
       >;
     };
