@@ -168,54 +168,19 @@ conditional_layers {
 	};
 };
 
-combos {
-compatible = "zmk,combos";
-timeout-ms = <20>;
-require-prior-idle-ms = <250>;
+  combos {
+    compatible = "zmk,combos";
+    timeout-ms = <20>;
+    require-prior-idle-ms = <250>;
 
     // Studio Unlock Combo - all three right thumb keys
     combo_studio_unlock {
-        timeout-ms = <50>;
-        key-positions = <53 54 55>;
-        bindings = <&studio_unlock>;
-    };
-    
-	combo_st_left_click {
-		timeout-ms = <25>;
-		require-prior-idle-ms = <125>;
-		key-positions = <27 28>;
-		layers = <ABC NUM NAV>;
-		bindings = <&mkp LCLK>;
-	};
-	combo_cd_right_click {
-		timeout-ms = <25>;
-		require-prior-idle-ms = <125>;
-		key-positions = <39 40>;
-		layers = <ABC NUM NAV>;
-		bindings = <&mkp RCLK>;
-	};
-    combo_fp_caps_word {
-        timeout-ms = <30>;
-        key-positions = <15 16>;
-        bindings = <&caps_word>;
-    };
-    combo_lu_del {
-        timeout-ms = <30>;
-        key-positions = <19 20>;
-        bindings = <&kp DEL>;
-    };
-    combo_tic1_esc {
-        timeout-ms = <30>;
-        key-positions = <0 1>;
-        bindings = <&kp ESC>;
-    };
-    combo_hdot_navlock {
-        timeout-ms = <30>;
-        key-positions = <26 28>;
-        bindings = <&to NAV>;
+      timeout-ms = <50>;
+      key-positions = <53 54 55>;
+      bindings = <&studio_unlock>;
     };
 
-};
+  };
 
   keymap {
     compatible = "zmk,keymap";
@@ -244,7 +209,7 @@ require-prior-idle-ms = <250>;
       display-name = "ABC";
       bindings = <
 // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp GRAVE     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5            &kp N6        &kp N7        &kp N8        &kp N9        &kp N0        &kp DEL
+    &kp ESC       &kp N1        &kp N2        &kp N3        &kp N4        &kp N5            &kp N6        &kp N7        &kp N8        &kp N9        &kp N0        &kp DEL
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp TAB       &kp Q         &kp W         &kp F         &kp P         &kp B             &kp J         &kp L         &kp U         &kp Y         &kp SQT       &kp BSLH
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
