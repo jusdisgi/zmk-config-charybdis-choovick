@@ -263,13 +263,13 @@ require-prior-idle-ms = <250>;
       display-name = "NUM";
       bindings = <
 // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp GRAVE     &kp F1        &kp F2        &kp F3        &kp F4        &kp F5            &kp F6        &kp F7        &kp F8        &kp F9        &kp F10       &trans
+    &kp F1        &kp F2        &kp F3        &kp F4        &kp F5            &kp F6        &kp F7        &kp F8        &kp F9        &kp F10       &kp F11       &kp F12
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp LA(TAB)   &kp LGUI      &kp LALT      &mo FUN       &mkp MB4      &mkp MB5          &kp HOME      &kp N7         &kp N8        &kp N9       &kp F11       &kp F12
+    &kp LA(TAB)   &kp LGUI      &kp LALT      &mo FUN       &mkp MB4      &mkp MB5          &kp LPAR      &kp N7         &kp N8        &kp N9       &kp FSLH      &kp DEL
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp RCTRL     &kp LG(A)     &ctrl_cmd_hold &mkp RCLK    &mkp LCLK     &mkp MCLK         &kp LEFT      &kp N4         &kp N5         &kp N6      &kp MINUS     &kp EQUAL
+    &kp RCTRL     &kp LG(A)     &ctrl_cmd_hold &mkp RCLK    &mkp LCLK     &mkp MCLK         &kp RPAR      &kp N4         &kp N5         &kp N6      &kp MINUS     &kp EQUAL
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp LSFT      &kp Z         &kp X         &kp C         &kp V         &mo NAV           &kp STAR      &kp N1         &kp N2         &kp N3      &kp PLUS      &kp ENTER
+    &kp LSFT      &kp Z         &kp X         &kp C         &kp D         &mo NAV           &kp STAR      &kp N1         &kp N2         &kp N3      &kp PLUS      &kp ENTER
 // ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
 //               ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────╮
                   &trans        &trans        &trans        &trans        &trans            &kp DOT       &kp N0         &kp N0
@@ -282,13 +282,13 @@ require-prior-idle-ms = <250>;
       display-name = "SYM";
       bindings = <
 // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp ESC       &CAC F1       &CAC F2       &CAC F3       &CAC F4       &CAC F5           &CAC F6       &CAC F7       &CAC F8       &CAC F9       &CAC F10      &trans
+    &kp LA(F1)    &kp LA(F2)    &kp LA(F3)    &kp LA(F4)    &kp LA(F5)    &kp LA(F6)        &kp LA(F7)    &kp LA(F8)    &kp LA(F9)    &kp LA(F10)   &kp LA(F11)   &kp LA(F12)
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &none         &CA Q         &CA W         &CA E         &CA R         &CA T             &CA Y         &CA U         &CA I         &CA O         &CAC F11      &CAC F12
+    &none         &CA Q         &CA W         &CA E         &CA R         &CA T             &kp CARET     &kp MINUS     &kp EQUAL     &kp BSLH      &kp TILDE     &CAC F12
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp CAPS      &CA A         &CA S         &CA D         &CA F         &CA G             &CA H         &CA J         &CA K         &CA L         &CA SEMI      &CA SQT
+    &kp CAPS      &CA A         &CA S         &CA D         &CA F         &CA G             &kp COLON     &kp LPAR      &kp RPAR      &kp PLUS      &kp SEMI      &kp RSHFT
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &CA Z         &CA X         &CA C         &CA V         &CSA F1           &kp LS(LG(GRAVE)) &kp LG(GRAVE) &CA COMMA     &CA DOT       &CA FSLH      &trans
+    &trans        &CA Z         &CA X         &CA C         &CA V         &CSA F1           &kp PIPE      &kp EXCL      &kp AT        &kp HASH      &kp GRAVE     &kp LG(L)
 // ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
 //               ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────╮
                   &trans        &trans        &trans        &trans        &trans            &trans        &trans        &trans
